@@ -1,0 +1,19 @@
+{
+  "author": "Helen Liutongco",
+  "name": "image-gallery",
+  "description": "A simple app that fetches images and displays them in a simple paginated gallery",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hliutongco/image-gallery.git"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "dependencies": {
+    "browser-sync": "^2.8.2"
+  },
+  "scripts": {
+
+  },
+  "private": false
+}
