@@ -2,6 +2,11 @@
   "author": "Helen Liutongco",
   "name": "image-gallery",
   "description": "A simple app that fetches images and displays them in a simple paginated gallery",
+  "main": "./app/index.html",
+  "dependencies": {
+    "express": "^4.17.1",
+    "open": "^6.4.0"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:hliutongco/image-gallery.git"
@@ -9,11 +14,8 @@
   "engines": {
     "node": "0.12.x"
   },
-  "dependencies": {
-    "browser-sync": "^2.8.2"
-  },
   "scripts": {
-
+    "start": "node app/js/index.js"
   },
   "private": false
 }
