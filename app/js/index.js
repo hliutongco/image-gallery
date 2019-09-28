@@ -1,8 +1,8 @@
-fetch('http://my-image-gallery-254305.appspot.com/', {
-  method: 'GET',
-  headers: {
-    "Access-Control-Allow-Origin": '*'
-  }
+Adapter.getImageObjs()
+.then(data => {
+  const imageContainer = document.getElementById('image-container')
+  data.forEach((obj) => {
+    const newImage = new ImageCard(obj)
+    imageContainer.append(newImage.render())
+  })
 })
-.then(res => res.json())
-.then(console.log)
