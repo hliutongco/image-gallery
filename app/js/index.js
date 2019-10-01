@@ -4,14 +4,13 @@ const getImageCards = async () => {
 }
 
 const renderCards = (cards) => {
-  console.log(cards);
   const imageContainer = document.getElementById('image-container')
 
-  // clearr all existing elements
+  // clear all existing elements
   while (imageContainer.firstChild) {
     imageContainer.removeChild(imageContainer.firstChild);
   }
-  
+
   cards.forEach((card) => {
     imageContainer.append(card.render())
   })
@@ -38,9 +37,15 @@ const renderPaginatedCards =  async () => {
 
   document.getElementById('pagination').addEventListener('click', (event) => {
     if(event.target.className === "page_number"){
-      paginatedImageCards.currentPage = parseInt(event.target.innerText)
-      console.log(paginatedImageCards.returnCardArray());
+      const pageNum = event.target.innerText
+      paginatedImageCards.changeCurrentPage(parseInt(pageNum))
       renderCards(paginatedImageCards.returnCardArray())
+      window.history.pushState("", "", `/${[pageNum]}`);
+    } else if (event.target.className === "pageButton") {
+      const currentPage = paginatedImageCards.currentPage
+      event.target.id === "button_next" ? paginatedImageCards.changeCurrentPage(currentPage + 1) : paginatedImageCards.changeCurrentPage(currentPage - 1)
+      renderCards(paginatedImageCards.returnCardArray())
+      window.history.pushState("", "", `/${[paginatedImageCards.currentPage]}`);
     }
   })
 
@@ -51,7 +56,6 @@ const renderPaginatedCards =  async () => {
 
 
 const runner = async () => {
-
   const cards = await renderPaginatedCards()
 
   renderCards(cards)

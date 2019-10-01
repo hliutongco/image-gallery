@@ -10,6 +10,8 @@ app.use(express.static('app'));
 // for frontend dependencies:
 // app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 
+app.get('*', (req, res) => res.redirect("../"));
+
 app.listen(port, () => {
   console.log('page loading on localhost:', port);
   open(`http://localhost:${port}/`)

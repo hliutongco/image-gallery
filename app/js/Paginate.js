@@ -13,17 +13,11 @@ class Paginate {
   }
 
   changeCurrentPage(pageNum){
+    if(pageNum < 1 || pageNum > 6) return
     this.currentPage = pageNum
   }
 
   returnCardArray(){
-    if(typeof this.currentPage === "number"){
-
-      return this.allCards[this.currentPage - 1]
-    }
-    else {
-      console.log("error");
-    }
-
+    return this.allCards[this.currentPage - 1]
   }
 }
