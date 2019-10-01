@@ -1,11 +1,15 @@
-class Adapter {
-  static getImageObjs = () => {
-    return fetch('http://my-image-gallery-254305.appspot.com/', {
+const getImageObjs = async () => {
+  try {
+    const fetchPromiseObj = await fetch('http://my-image-gallery-254305.appspot.com/', {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": '*'
       }
     })
-    .then(res => res.json())
+
+    return await fetchPromiseObj.json()
+  }
+  catch(e) {
+    console.log('Error!', e);
   }
 }
