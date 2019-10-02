@@ -1,14 +1,12 @@
 class ImageCard {
-  constructor({ alt_description, urls }){
-    this.alt = alt_description
+  constructor({ urls, id }){
     this.urls = urls
+    this.id = id
   }
 
   render(){
     const imageCard = document.createElement('div')
-    imageCard.className = "image-card"
-    imageCard.innerHTML = `<img src=${this.urls.thumb}/>`
-
+    imageCard.innerHTML = `<img class="image-card" data-id=${this.id} src=${this.urls.thumb}/>`
     return imageCard
   }
 }

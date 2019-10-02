@@ -3,6 +3,28 @@ const getImageCards = async () => {
   return data.map(obj => new ImageCard(obj))
 }
 
+const paginateCardsOnPageLoad = (imageCards) => {
+  const paginatedImageCards = new Paginate(imageCards)
+  return paginatedImageCards
+}
+
+const setUpPaginationMenu = (paginatedImageCards) => {
+  document.getElementById('pagination').addEventListener('click', (event) => {
+    if(event.target.className === "page_number"){
+      const pageNum = event.target.innerText
+      paginatedImageCards.changeCurrentPage(parseInt(pageNum))
+      renderCards(paginatedImageCards.returnCardArray())
+      window.history.pushState("", "", `/${[pageNum]}`);
+    }
+    else if (event.target.className === "pageButton") {
+      const currentPage = paginatedImageCards.currentPage
+      event.target.id === "button_next" ? paginatedImageCards.changeCurrentPage(currentPage + 1) : paginatedImageCards.changeCurrentPage(currentPage - 1)
+      renderCards(paginatedImageCards.returnCardArray())
+      window.history.pushState("", "", `/${[paginatedImageCards.currentPage]}`);
+    }
+  })
+}
+
 const renderCards = (cards) => {
   const imageContainer = document.getElementById('image-container')
 
@@ -16,49 +38,37 @@ const renderCards = (cards) => {
   })
 }
 
-const paginateCardsOnPageLoad = async () => {
-  const imageCards = await getImageCards()
-  const paginatedImageCards = new Paginate(imageCards)
-  return paginatedImageCards
-}
-
-const renderPaginatedCards =  async () => {
-  const paginatedImageCards = await paginateCardsOnPageLoad()
-
-  const nextButton = document.getElementById('button_next')
-  const maxPage = paginatedImageCards.allCards.length
-
-  for(let page = maxPage; page > 1; page--){
-    const newPage = document.createElement('span')
-    newPage.className = "page_number"
-    newPage.innerText = ` ${page} `
-    nextButton.prepend(newPage)
-  }
-
-  document.getElementById('pagination').addEventListener('click', (event) => {
-    if(event.target.className === "page_number"){
-      const pageNum = event.target.innerText
-      paginatedImageCards.changeCurrentPage(parseInt(pageNum))
-      renderCards(paginatedImageCards.returnCardArray())
-      window.history.pushState("", "", `/${[pageNum]}`);
-    } else if (event.target.className === "pageButton") {
-      const currentPage = paginatedImageCards.currentPage
-      event.target.id === "button_next" ? paginatedImageCards.changeCurrentPage(currentPage + 1) : paginatedImageCards.changeCurrentPage(currentPage - 1)
-      renderCards(paginatedImageCards.returnCardArray())
-      window.history.pushState("", "", `/${[paginatedImageCards.currentPage]}`);
+const setUpModalEventListener = (imageCards) => {
+  const imageContainer = document.getElementById('image-container')
+  imageContainer.addEventListener('click', (event) => {
+    if(event.target.className === "image-card"){
+      const foundImageData = imageCards.find((obj) => obj.id === event.target.dataset.id)
+      const imageModal = new Modal(foundImageData)
+      const modalContainer = document.getElementById('modal-container')
+      modalContainer.innerHTML = imageModal.render()
     }
   })
-
-  const cardsToRender = paginatedImageCards.returnCardArray()
-  return cardsToRender
-
 }
 
+const setUpModalClose = () => {
+  const modalContainer = document.getElementById('modal-container')
+  modalContainer.addEventListener('click', (event) => {
+    if(event.target.type === "submit"){
+      while (modalContainer.firstChild) {
+        modalContainer.removeChild(modalContainer.firstChild);
+      }
+    }
+  })
+}
 
 const runner = async () => {
-  const cards = await renderPaginatedCards()
-
-  renderCards(cards)
+  const imageCards = await getImageCards()
+  const paginatedImageCards = paginateCardsOnPageLoad(imageCards)
+  paginatedImageCards.renderPaginatedMenu()
+  setUpPaginationMenu(paginatedImageCards)
+  renderCards(paginatedImageCards.returnCardArray())
+  setUpModalEventListener(imageCards)
+  setUpModalClose()
 }
 
 runner()
