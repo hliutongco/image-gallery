@@ -6,8 +6,10 @@ class Modal {
   render(){
     return `
       <div id="image-modal">
-        <img alt=${this.alt} src=${this.urls.regular}/>
-        <button id="close-button">X</button>
+        <div>
+          <img alt=${this.alt} src=${this.urls.regular}/>
+        </div>
+        <button id="close-button">click to close</button>
       </div>
     `
   }

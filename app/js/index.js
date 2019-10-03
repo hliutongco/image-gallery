@@ -10,15 +10,18 @@ const paginateCardsOnPageLoad = (imageCards) => {
 
 const setUpPaginationMenu = (paginatedImageCards) => {
   document.getElementById('pagination').addEventListener('click', (event) => {
-    if(event.target.className === "page_number"){
-      const pageNum = event.target.innerText
+    if(event.target.tagName === "SPAN"){
+      let pageNum
+
+      if (event.target.className === "page-buttons") {
+        const currentPage = paginatedImageCards.currentPage
+        pageNum = event.target.id === "button-next" ? currentPage + 1 : currentPage - 1
+      }
+      else {
+        pageNum = event.target.innerText
+      }
+
       paginatedImageCards.changeCurrentPage(parseInt(pageNum))
-      renderCards(paginatedImageCards.returnCardArray())
-      window.history.pushState("", "", `/${[pageNum]}`);
-    }
-    else if (event.target.className === "pageButton") {
-      const currentPage = paginatedImageCards.currentPage
-      event.target.id === "button_next" ? paginatedImageCards.changeCurrentPage(currentPage + 1) : paginatedImageCards.changeCurrentPage(currentPage - 1)
       renderCards(paginatedImageCards.returnCardArray())
       window.history.pushState("", "", `/${[paginatedImageCards.currentPage]}`);
     }

@@ -22,14 +22,13 @@ class Paginate {
   }
 
   renderPaginatedMenu(){
-    const nextButton = document.getElementById('button_next')
+    const pages = document.getElementById('page-numbers')
     const maxPage = this.allCards.length
 
-    for(let page = maxPage; page > 1; page--){
+    for(let page = 2; page <= maxPage; page++){
       const newPage = document.createElement('span')
-      newPage.className = "page_number"
       newPage.innerText = ` ${page} `
-      nextButton.prepend(newPage)
+      pages.append(newPage)
     }
 
     const cardsToRender = this.returnCardArray()

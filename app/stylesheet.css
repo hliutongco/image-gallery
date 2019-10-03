@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -7,37 +6,28 @@ body {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
-}
-
+  -o-user-select: none; }
 
 #image-modal {
   position: fixed;
-  top: 0; left: 0vw;
+  top: 0;
+  left: 0vw;
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-
-  button {
+  z-index: 1; }
+  #image-modal button {
     width: 80%;
-    padding: 1vh;
-  }
-
-  div {
+    padding: 1vh; }
+  #image-modal div {
     margin: 5vh auto 0 auto;
     background-color: rgba(255, 255, 255, 0.9);
     height: 85%;
-    max-width: 80%;
-
-    img {
+    max-width: 80%; }
+    #image-modal div img {
       border: 1px solid black;
       height: 100%;
-      max-width: 100%;
-    }
-  }
-}
-
+      max-width: 100%; }
 
 #image-container {
   margin: 0 auto;
@@ -45,41 +35,30 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-
-  img {
+  justify-content: center; }
+  #image-container img {
     height: 300px;
     width: 200px;
-    object-fit: cover;
-
-    &:hover {
+    object-fit: cover; }
+    #image-container img:hover {
       opacity: 0.4;
-      z-index: 0;
-    }
-  }
-}
+      z-index: 0; }
 
 #pagination {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 5vh 0 5vh 0;
-  font-size: calc(2vw + 2vh + 2vmin);
-
-  span {
+  font-size: calc(2vw + 2vh + 2vmin); }
+  #pagination span {
     padding: 1.5vw;
-    margin: 0;
-    &:hover {
-      background-color: #86BC8A;
-    }
-  }
-
-  #page-numbers {
-    margin-top: 1.5vw;
-  }
-
-  #button-next, #button-prev {
+    margin: 0; }
+    #pagination span:hover {
+      background-color: #86BC8A; }
+  #pagination #page-numbers {
+    margin-top: 1.5vw; }
+  #pagination #button-next, #pagination #button-prev {
     border: 1px solid black;
-    border-radius: 5px;
-  }
-}
+    border-radius: 5px; }
+
+/*# sourceMappingURL=stylesheet.css.map */

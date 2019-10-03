@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Image Gallery</title>
+    <link rel="stylesheet" href="./stylesheet.css">
   </head>
   <body>
+    <h1>Click On An Image To See The Full View</h1>
     <div id="modal-container">
     </div>
-    <div id="pagination">
-      <span class="pageButton" id="button_prev">Prev</span>
-      <span class="page_number">1</span>
-      <span class="pageButton" id="button_next">Next</span>
-    </div>
     <div id="image-container"></div>
+    <div id="pagination">
+      <span class="page-buttons" id="button-prev">Prev</span>
+      <div id="page-numbers">
+        <span>1</span>
+      </div>
+      <span class="page-buttons" id="button-next">Next</span>
+    </div>
   </body>
   <script type="text/javascript" src="./js/Modal.js"></script>
   <script type="text/javascript" src="./js/Paginate.js"></script>

@@ -5,8 +5,10 @@ class ImageCard {
   }
 
   render(){
-    const imageCard = document.createElement('div')
-    imageCard.innerHTML = `<img class="image-card" data-id=${this.id} src=${this.urls.thumb}/>`
+    const imageCard = document.createElement('img')
+    imageCard.className = "image-card"
+    imageCard.dataset.id = this.id
+    imageCard.src = this.urls.small
     return imageCard
   }
 }
