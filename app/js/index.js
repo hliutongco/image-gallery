@@ -13,6 +13,8 @@ const setUpPaginationMenu = (paginatedImageCards) => {
     if(event.target.tagName === "SPAN"){
       let pageNum
 
+      // the first block in this conditional handles the Prev/Next buttons
+      // the else block handles the clickable page numbers
       if (event.target.className === "page-buttons") {
         const currentPage = paginatedImageCards.currentPage
         pageNum = event.target.id === "button-next" ? currentPage + 1 : currentPage - 1
@@ -41,6 +43,7 @@ const renderCards = (cards) => {
   })
 }
 
+// when the user clicks on a thumbnail, retrieve the image data then render the modal
 const setUpModalEventListener = (imageCards) => {
   const imageContainer = document.getElementById('image-container')
   imageContainer.addEventListener('click', (event) => {

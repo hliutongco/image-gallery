@@ -7,9 +7,8 @@ const axios = require('axios');
 
 app.use(express.static('app'));
 
-// for frontend dependencies:
-// app.use('/scripts', express.static(`${__dirname}/node_modules/`));
-
+// this line redirects to the homepage if the user tries to go directly to another page
+// e.g. "http://localhost:3000/6"
 app.get('*', (req, res) => res.redirect("../"));
 
 app.listen(port, () => {
