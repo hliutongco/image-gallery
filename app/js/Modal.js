@@ -7,10 +7,16 @@ class Modal {
     return `
       <div id="image-modal">
         <div>
-          <img alt=${this.alt} src=${this.urls.regular}/>
+          <img src=${this.urls.regular}/>
         </div>
         <button id="close-button">click to close</button>
       </div>
     `
+  }
+}
+
+if (typeof exports !== 'undefined') {
+  module.exports = {
+    Modal
   }
 }

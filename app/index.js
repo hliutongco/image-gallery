@@ -68,13 +68,14 @@ const setUpModalClose = () => {
 }
 
 const runner = async () => {
+  const parentNode = document.getElementById('page-numbers')
   const imageCards = await getImageCards()
   const paginatedImageCards = paginateCardsOnPageLoad(imageCards)
-  paginatedImageCards.renderPaginatedMenu()
+  paginatedImageCards.renderPaginatedMenu(parentNode)
   setUpPaginationMenu(paginatedImageCards)
   renderCards(paginatedImageCards.returnCardArray())
   setUpModalEventListener(imageCards)
   setUpModalClose()
 }
 
-runner()
+document.addEventListener('DOMContentLoaded', runner)

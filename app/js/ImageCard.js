@@ -12,3 +12,9 @@ class ImageCard {
     return imageCard
   }
 }
+
+if (typeof exports !== 'undefined') {
+  module.exports = {
+      ImageCard
+  }
+}

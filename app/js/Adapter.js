@@ -3,16 +3,22 @@
 
 const getImageObjs = async () => {
   try {
-    const fetchPromiseObj = await fetch('http://my-image-gallery-254305.appspot.com/', {
+    const fetchPromiseObj = await axios.get('http://my-image-gallery-254305.appspot.com/', {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": '*'
       }
     })
 
-    return await fetchPromiseObj.json()
+    return await fetchPromiseObj.data
   }
   catch(e) {
     console.log('Error!', e);
+  }
+}
+
+if (typeof exports !== 'undefined') {
+  module.exports = {
+      getImageObjs
   }
 }

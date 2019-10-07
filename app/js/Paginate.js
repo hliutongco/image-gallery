@@ -24,8 +24,7 @@ class Paginate {
     return this.allCards[this.currentPage - 1]
   }
 
-  renderPaginatedMenu(){
-    const pages = document.getElementById('page-numbers')
+  renderPaginatedMenu(parentNode){
     const maxPage = this.allCards.length
 
     // this loop builds the menu for the paginated images
@@ -33,11 +32,15 @@ class Paginate {
     for(let page = 2; page <= maxPage; page++){
       const newPage = document.createElement('span')
       newPage.innerText = ` ${page} `
-      pages.append(newPage)
+      parentNode.append(newPage)
     }
 
-    const cardsToRender = this.returnCardArray()
-    return cardsToRender
+    return parentNode
+  }
+}
 
+if (typeof exports !== 'undefined') {
+  module.exports = {
+    Paginate
   }
 }
