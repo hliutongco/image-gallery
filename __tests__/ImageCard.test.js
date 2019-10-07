@@ -1,4 +1,4 @@
-const {ImageCard} = require('../app/js/ImageCard.js')
+const {ImageCard} = require('../app/classes/ImageCard.js')
 
 describe('Create ImageCard object', () => {
   const data = {

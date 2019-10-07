@@ -1,4 +1,4 @@
-const {Modal} = require('../app/js/Modal.js')
+const {Modal} = require('../app/classes/Modal.js')
 
 describe('Create Modal object', () => {
   const data = {

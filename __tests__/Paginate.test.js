@@ -1,4 +1,4 @@
-const {Paginate} = require('../app/js/Paginate.js')
+const {Paginate} = require('../app/classes/Paginate.js')
 
 describe('Create Paginate object', () => {
   const data = []
